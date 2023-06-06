@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 async function getData(id: string) {
   const res = await fetch(`http://localhost3000:/api/posts/${id}`, {
@@ -16,7 +15,7 @@ async function getData(id: string) {
   return res.json();
 }
 
-export async function generateMetadata({ params }: Params) {
+export async function generateMetadata({ params }: { params: any }) {
   const post = await getData(params.id);
   return {
     title: post.title,
@@ -24,7 +23,7 @@ export async function generateMetadata({ params }: Params) {
   };
 }
 
-const BlogPost = async ({ params }: Params) => {
+const BlogPost = async ({ params }: { params: any }) => {
   const data = await getData(params.id);
   return (
     <div className={styles.container}>
