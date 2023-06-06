@@ -1,11 +1,11 @@
 "use client";
-import React, { FormEvent, useEffect, useRef, useState } from "react";
-import styles from "./page.module.css";
-import { getProviders, signIn, useSession } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import styles from "./page.module.css";
 
-const Login = ({ url }: { url: string }) => {
+const Login = () => {
   const session = useSession();
   const router = useRouter();
   const params = useSearchParams();
